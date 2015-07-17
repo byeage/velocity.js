@@ -57,10 +57,8 @@
 
 
  ***
+
  ##css3变换
-
- ### transform 
-
 	$element.velocity({
 		translateZ: 0, // 移动端开启硬件加速
 		translateX: "200px",
@@ -95,67 +93,77 @@
 	    opacity: 1,
 	    width: "50%"
 	});
+
 ###属性
 
-.    opacity
-.    width (px, %)
-.    height (px, %)
-.    ------------
-.    x (px, %)
-.    y (px, %)
-.    cx (px, %)
-.    cy (px, %)
-.    r (px, %)
-.    rx (px, %)
-.    ry (px, %)
-.    x1 (px, %)
-.    x2 (px, %)
-.    y1 (px, %)
-.    y2 (px, %)
-------------
-.    strokeDasharray (px)
-.    strokeDashoffset (px)
-.    strokeWidth (px)
-.    strokeMiterlimit (unitless)
-.    startOffset (%)
-------------
-.    translateX (px)
-.    translateY (px)
-.    scale (unitless)
-.    scaleX (unitless)
-.    scaleY (unitless)
-.    rotateZ (deg)
-.    skewX (deg)
-.    skewY (deg)
- ------------
-.    rotateX (deg) (No IE)
-.    rotateY (deg) (No IE)
-.    translateZ (px, %) (No IE)
-.    transformPerspective (px only) (No IE)
-.    transformOriginX (px, %) (No IE)
-.    transformOriginY (px, %) (No IE)
-.    transformOriginZ (px, %) (No IE)
-------------
-.    fill (hex string)
-.    fillRed (unitless, %)
-.    fillGreen (unitless, %)
-.    fillBlue (unitless, %)
-.    fillAlpha (unitless, %)
-.    fillOpacity (unitless)
-.    stroke (hex string)
-.    strokeRed (unitless, %)
-.    strokeGreen (unitless, %)
-.    strokeBlue (unitless, %)
-.    strokeAlpha (unitless, %)
-.    strokeOpacity (unitless)
-.    stopColor (hex string)
-.    stopColorRed (unitless, %)
-.    stopColorGreen (unitless, %)
-.    stopColorBlue (unitless, %)
-.    stopColorAlpha (unitless, %)
-.    stopOpacity (unitless)
-.    offset (%)
-------------
-.    fontSize (px, %)
-.    letterSpacing (px, %)
-.    wordSpacing (px, %)
+	opacity
+	width (px, %)
+	height (px, %)
+	x (px, %)
+	y (px, %)
+	cx (px, %)
+	cy (px, %)
+	r (px, %)
+	rx (px, %)
+	ry (px, %)
+	x1 (px, %)
+	x2 (px, %)
+	y1 (px, %)
+	y2 (px, %)
+	strokeDasharray (px)
+	strokeDashoffset (px)
+	strokeWidth (px)
+	strokeMiterlimit (unitless)
+	startOffset (%)
+	translateX (px)
+	translateY (px)
+	scale (unitless)
+	scaleX (unitless)
+	scaleY (unitless)
+	rotateZ (deg)
+	skewX (deg)
+	skewY (deg)
+	rotateX (deg) (No IE)
+	rotateY (deg) (No IE)
+	translateZ (px, %) (No IE)
+	transformPerspective (px only) (No IE)
+	transformOriginX (px, %) (No IE)
+	transformOriginY (px, %) (No IE)
+	transformOriginZ (px, %) (No IE)
+	fill (hex string)
+	fillRed (unitless, %)
+	fillGreen (unitless, %)
+	fillBlue (unitless, %)
+	fillAlpha (unitless, %)
+	fillOpacity (unitless)
+	stroke (hex string)
+	strokeRed (unitless, %)
+	strokeGreen (unitless, %)
+	strokeBlue (unitless, %)
+	strokeAlpha (unitless, %)
+	strokeOpacity (unitless)
+	stopColor (hex string)
+	stopColorRed (unitless, %)
+	stopColorGreen (unitless, %)
+	stopColorBlue (unitless, %)
+	stopColorAlpha (unitless, %)
+	stopOpacity (unitless)
+	offset (%)
+	fontSize (px, %)
+	letterSpacing (px, %)
+	wordSpacing (px, %)
+
+###hook
+
+	//类似Jquery的css()方法
+	//设置属性
+	$.Velocity.hook($element, "translateX", "500px"); // Must provide unit type
+	$.Velocity.hook(elementNode, "textShadowBlur", "10px"); // Must provide unit type
+	//获取属性
+	$.Velocity.hook($element, "translateX");
+	$.Velocity.hook(elementNode, "textShadowBlur");
+
+
+###未完待续...
+
+	

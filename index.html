@@ -16,58 +16,158 @@
 		padding: 0;
 		margin: 0;
 	}
-	.circle{
-		height: 30px;
-		width: 30px;
-		background: red;
-		border-radius: 100%;
-		position: absolute;
-		left:30%;
-		top: 30%;
-		color:#000;
-		font-size: 10px;
+	#svg{
+		width: 500px;
+		height: 500px;
+		border:1px solid #000;
 	}
-	.bar{
-		width: 0;
-		height: 20px;
-		background: red;
-	}
-	.nav{
+	div.demo{
 		width: 100px;
 		height: 100px;
-		background: blue;
+		background: #F66;
+		line-height: 100px;
+		text-align: center;
+		color:#FFF;
+		font-weight: bold;
+		font-size: 18px;
+		margin:5px 0;
+	}
+	div.demo:nth-child(4){
+		width:200px;
+		height: 200px;
+		line-height: 50px;
+		text-align: left;
 	}
 </style>
 </head>
 <body>
-    
+    	<div class="demo">1</div>
+    	<div class="demo">2</div>
+    	<div class="demo">3</div>
+    	<div class="demo">
+    		<div class="complete">complete:</div>
+    		<div class="remaining">remaining:</div>
+    		<div class="start">start:</div>
+    		<div class="tween">tween:</div>
+    	</div>
+    	<div class="demo">5</div>
+    	<div class="demo">6</div>
+    	<div class="demo">7</div>
+    	<div class="demo">8</div>
+    	<div class="demo">9</div>
+    	<div class="demo">10</div>
+    	<div class="demo">11</div>
+    	<div class="demo">12</div>
+    	<div class="demo">13</div>
+    	<div class="demo">14</div>
+    	<div class="demo">15</div>
+    	<div class="demo">16</div>
+    	<div class="demo">17</div>
+    	<div class="demo">18</div>
+    	<div class="demo">19</div>
+    	<div class="demo">20</div>
 	
-    <div class="circle">
-    	
-    </div>
-    <div class="circle">
-    	
-    </div>
-    <div class="circle">
-    	
-    </div>
-    <div class="circle">
-    	
-    </div>
-    <div class="bar">
-    	
-    </div>
-    <div class="nav"></div>
+	<svg id="svg">
+		<rect x="200" y="200" width="100" height="100" fill="red" stroke="red" stroke-width="3"/>
+	</svg>
+
     <script>
-    		$(".circle").eq(0).velocity({left:"50%",top:"60%",width:"60px",height:"60px"},3000,"swing",function(){
-    			$(".circle").eq(0).html("complete");
-    		});
 
-    		$(".circle").eq(1).velocity({left:"20",top:"20"},{duration:1000,loop:true,easing:"swing"});
+    $(".demo").eq(0).velocity({scale:2},{
+    	duration:1000,
+    	begin:function(){
+    		$(".demo").eq(0).html("start");
+    	},
+    	complete:function(){
+    		$(".demo").eq(0).html("end");
+    	}
+    });
+    /*队列*/
+    $(".demo").eq(1).velocity({marginLeft:"200px"},{queue:"a"})
+    				.velocity({width:"200px",height:"200px"},{queue:"b"});
 
-    		$(".bar").velocity({width:"200px"},2000,"spring");	
-    		
-    		$(".nav").velocity("slideUp",{duration:1500,delay:500});
+
+    setTimeout(function(){
+    	$(".demo").eq(1).dequeue("a");
+    },2000);
+    setTimeout(function(){
+    	$(".demo").eq(1).dequeue("b");
+    },3000);
+
+
+    $(".demo").eq(2).velocity({backgroundColor:"#55F"},1000);
+//补间插值
+    $(".demo").eq(3).velocity({
+    	backgroundColor:"#55F",
+    	tween:100
+    },{
+    	duration:4000,
+    	progress:function(obj,c,r,s,t){
+    		$(".demo:eq(3) .complete").html("complete:"+c);
+    		$(".demo:eq(3) .remaining").html("remaining:"+r);
+    		$(".demo:eq(3) .start").html("start:"+s);
+    		$(".demo:eq(3) .tween").html("tween:"+t);
+    	
+    	}
+    });
+    /*延时*/
+    $(".demo:eq(4)").velocity({
+    	translateX:"200px"
+    },{
+    	duration:2000,
+    	delay:500
+    });
+
+    $(".demo:eq(5)").velocity("fadeIn",{duration:4000})
+    $(".demo:eq(6)").velocity("fadeOut",{duration:4000})
+    $(".demo:eq(7)").velocity("slideUp",{duration:4000,delay:4000})
+    $(".demo:eq(8)").velocity("slideDown",{duration:4000})
+    $(".demo:eq(8)").velocity({width:"300px"},{duration:4000})
+    				.velocity({height:"300px"},1000)
+    				.velocity({width:"100px",height:"100px"},2000)
+    				.velocity("stop");
+
+	 $(".demo:eq(9)").velocity({width:"200px",opacity:0.5},{duration:4000})
+	 				 .velocity("reverse");
+
+	  $(".demo:eq(10)").velocity({width:"500px"},{duration:4000});
+
+	  setTimeout(function(){
+ 			$(".demo:eq(10)").velocity("finish");
+
+	  }, 1000);
+
+	   $(".demo:eq(11)").velocity({rotateZ:"45deg"},{duration:4000});
+
+	   $(".demo:eq(12)").velocity({
+	   			backgroundColor:"#00f",
+	   			backgroundColorAlpha:0.5,
+	   			colorRed:"100%",
+	   			colorGreen:"-=255",
+	   			colorAlpha:1
+
+
+	   },{duration:4000});
+
+
+
+	   $.Velocity.hook($(".demo:eq(12)"),"marginLeft","300px");
+	    var left=  $.Velocity.hook($(".demo:eq(12)"),"marginLeft");
+	   console.log(left);
+
+	   $("#svg rect").velocity({
+	   	fill:"#88F",
+	   	width:"100%",
+	   	height:"100%",
+	   	x:0,
+	   	y:0,
+	   	stroke:"#000",
+	   },1000);
+
+/*    $(".demo:eq(15)").velocity("scroll",{duration:1000,easing:"spring"})
+    				.velocity({opacity:1})*/
+
+
 
     </script>
 </body>
