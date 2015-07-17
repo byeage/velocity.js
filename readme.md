@@ -36,3 +36,126 @@
 
 + mobilHA 开启手机硬件加速 默认开启
 + loop false true number flase 不循环 true 循环执行 数字为循环次数
++ delay 延时执行
++ dispaly visiblity 在complete后执行
+
+***
+	
+### 指令		
+	$element
+	    .velocity("fadeIn", { duration: 1500 }) //淡入
+	    .velocity("fadeOut", { delay: 500, duration: 1500 })//淡出
+	    .velocity("slideDown", { duration: 1500 })//下滑进入
+	    .velocity("slideUp", { delay: 500, duration: 1500 })//向上收起
+	    .velocity("scroll", { duration: 1500, easing: "spring" })//滑动缓动效果
+	    .velocity("scroll", { container: $("#container") })//滑动到指定位置，想起fullpage的anchors
+	    .velocity("scroll", { offset: "750px", mobileHA: false })//滚动到具体位置
+	    .velocity("stop"),
+	    .velocity("stop", "myQueue"); // Custom queue stop//停止一个队列中的动作
+		.velocity("finish");//完成动画,配合setTimeout可提前完成
+    	.velocity("reverse");//执行反向动画
+
+
+ ***
+ ##css3变换
+
+ ### transform 
+
+	$element.velocity({
+		translateZ: 0, // 移动端开启硬件加速
+		translateX: "200px",
+		rotateZ: "45deg"
+	});
+
+
+### color 
+
+	$element.velocity({
+	    backgroundColor: "#ff0000",//改变背景色
+	    backgroundColorAlpha: 0.5,//改变背景色的透明度
+	    colorRed: "50%",//RGB红色分量*0.5  (255,255,255)
+	    colorBlue: "+=50",//RGB蓝色分量+50
+	    colorAlpha: 0.85 //透明度为的0.85  0~1
+	});
+	
+
+###Svg
+	$svgRectangle.velocity({
+		//svg css属性
+	    x: 200,
+	    r: 25,
+	    translateX: "200px",
+	    translateZ: "200px",
+	    fill: "#ff0000",
+	    stroke:"#000",只能支持16进制颜色
+	    strokeRed: 255,//RGB颜色分量
+	    strokeGreen: 0,
+	    strokeBlue: 0,
+	   //标准css属性
+	    opacity: 1,
+	    width: "50%"
+	});
+###属性
+
+.    opacity
+.    width (px, %)
+.    height (px, %)
+.    ------------
+.    x (px, %)
+.    y (px, %)
+.    cx (px, %)
+.    cy (px, %)
+.    r (px, %)
+.    rx (px, %)
+.    ry (px, %)
+.    x1 (px, %)
+.    x2 (px, %)
+.    y1 (px, %)
+.    y2 (px, %)
+------------
+.    strokeDasharray (px)
+.    strokeDashoffset (px)
+.    strokeWidth (px)
+.    strokeMiterlimit (unitless)
+.    startOffset (%)
+------------
+.    translateX (px)
+.    translateY (px)
+.    scale (unitless)
+.    scaleX (unitless)
+.    scaleY (unitless)
+.    rotateZ (deg)
+.    skewX (deg)
+.    skewY (deg)
+ ------------
+.    rotateX (deg) (No IE)
+.    rotateY (deg) (No IE)
+.    translateZ (px, %) (No IE)
+.    transformPerspective (px only) (No IE)
+.    transformOriginX (px, %) (No IE)
+.    transformOriginY (px, %) (No IE)
+.    transformOriginZ (px, %) (No IE)
+------------
+.    fill (hex string)
+.    fillRed (unitless, %)
+.    fillGreen (unitless, %)
+.    fillBlue (unitless, %)
+.    fillAlpha (unitless, %)
+.    fillOpacity (unitless)
+.    stroke (hex string)
+.    strokeRed (unitless, %)
+.    strokeGreen (unitless, %)
+.    strokeBlue (unitless, %)
+.    strokeAlpha (unitless, %)
+.    strokeOpacity (unitless)
+.    stopColor (hex string)
+.    stopColorRed (unitless, %)
+.    stopColorGreen (unitless, %)
+.    stopColorBlue (unitless, %)
+.    stopColorAlpha (unitless, %)
+.    stopOpacity (unitless)
+.    offset (%)
+------------
+.    fontSize (px, %)
+.    letterSpacing (px, %)
+.    wordSpacing (px, %)
