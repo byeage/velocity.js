@@ -64,15 +64,16 @@
     	<div class="demo">16</div>
     	<div class="demo">17</div>
     	<div class="demo">18</div>
-    	<div class="demo">19</div>
-    	<div class="demo">20</div>
+    	<div class="demo aaa">19</div>
+    	<div class="demo aaa">20</div>
 	
 	<svg id="svg">
 		<rect x="200" y="200" width="100" height="100" fill="red" stroke="red" stroke-width="3"/>
 	</svg>
 
     <script>
-
+/*$.Velocity.mock=true;
+$.Velocity.mock=10;*/
     $(".demo").eq(0).velocity({scale:2},{
     	duration:1000,
     	begin:function(){
@@ -99,7 +100,7 @@
 //补间插值
     $(".demo").eq(3).velocity({
     	backgroundColor:"#55F",
-    	tween:100
+    	tween:1000
     },{
     	duration:4000,
     	progress:function(obj,c,r,s,t){
@@ -148,6 +149,23 @@
 
 
 	   },{duration:4000});
+
+
+	   	    $(".aaa").velocity({
+	    	translateX:[500,400],
+	    	opacity:[1,0]
+	   },{duration:4000});
+
+/*	    $(".demo").velocity({
+	   			
+	    	translateX:function(i,total){
+	    		console.log(i,total);
+	    		return total*10+"px";
+	    	}
+
+	   },{duration:4000});
+*/
+
 
 
 

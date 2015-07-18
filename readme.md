@@ -164,6 +164,80 @@
 	$.Velocity.hook(elementNode, "textShadowBlur");
 
 
-###未完待续...
+###mock
+
+	//When performing UI testing, you can set $.Velocity.mock = true; to force all Velocity animations to run with 0ms duration and 0ms delay. 
+	mock设置为true时，所有duration,delay都变为0；
+	$.Velocity.mock = 10;//减缓animation的速度
+
+
+
+###Utility Function
+
+	>
+	Feature: Utility Function 
+	Instead of using jQuery's plugin syntax to target jQuery objects, you can use Velocity's utility function to target raw DOM elements://	代替Jquery插件语法,使用原生DOM
+	var divs = document.getElementsByTagName("div");
+	$.Velocity(divs, { opacity: 0 }, { duration: 1500 });
+	var divs = document.getElementsByTagName("div");
+	$.Velocity({ e: divs, p: { opacity: 0 }, o: { duration: 1500 });
+	/>
+
+
+###Value Function
+	
+	>
+	Property values can be passed functions. These functions are called once per element — immediately before the element begins animating. Therefore, when looping/reversing, the functions are not repeatedly re-called.
+	The value returned by the function is used as the property value:
+	/>
+
+属性值传递一个函数，在运动之前立即调用，函数的返回值作为属性值
+
+
+	>
+	Value functions are passed the iterating element as their context, plus a first argument containing the element's index within the set and a second argument containing the total length of the set. By using these values, visual offseting can be achieved:
+	/>
+
+	$element.velocity({
+	    translateX: function(i, total) {
+	        /* Generate translateX's end value. */
+	        return i * 10;
+	    }
+	});
+
+i为$element对象集合当前index
+total为$element集合里对象的总个数
+
+
+###Forcefeeding
+
+强制进行，指定初始属性值取代css布局时的属性
+>Be sure to forcefeed only at the start of an animation, not between chained animations
+确认强制进行时仅可以在动作链的开头，不能再动作链之中
+	
+	$element.velocity({
+	    /* Two-item array format. */
+	    translateX: [ 500, 0 ],//0为起始点 ，500为终点
+	    /* Three-item array format with a per-property easing. */
+	    opacity: [ 0, "easeInSine", 1 ]
+	});
+
+	$element
+    /* Optionally forcefeed here. */
+    .velocity({ translateX: [ 500, 0 ] })//仅可以在动作链的开头不能再当中或结尾
+    /* Do not forcefeed here; 500 is internally cached. */
+    .velocity({ translateX: 1000 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 	
